@@ -1,5 +1,6 @@
 require './method.rb'
 
-3.times do
+num = ARGV[0].to_i
+num.times do
   create_employee
 end
