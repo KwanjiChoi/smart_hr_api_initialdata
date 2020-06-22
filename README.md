@@ -10,6 +10,8 @@ smart_HRのAPIを使う機会があったので、
 
 ### initialize.rbの設定
 ```ruby:initialize.rb
+require 'faker'
+
 KEY = 'your_api_key'
 BASE_URI = 'endpoint'
 DELETE_ID = '' #従業員削除の際使用
