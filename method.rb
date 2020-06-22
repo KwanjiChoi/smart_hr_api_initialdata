@@ -1,4 +1,5 @@
 require 'net/http'
+require 'json'
 require './initialize.rb'
 require './helper.rb'
 
@@ -10,7 +11,8 @@ def create_employee
   req.body = set_params.to_json
   req.initialize_http_header(set_header)
   response = http.request(req)
-  puts response.body
+  res_hash = JSON.parse(response.body)
+  puts "従業員 #{res_hash['last_name']}　#{res_hash['first_name']}を登録しました"
 end
 
 def delete_employee
@@ -20,4 +22,5 @@ def delete_employee
   req = Net::HTTP::Delete.new(uri.path)
   req.initialize_http_header(set_header)
   response = http.request(req)
+  puts '削除に成功しました' if response.code == '204'
 end
